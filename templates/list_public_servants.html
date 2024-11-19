@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Public Servants</h2>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Country</th>
+        <th>Actions</th>
+    </tr>
+    {% for public_servant in public_servants %}
+    <tr>
+        <td>{{ public_servant.email }}</td>
+        <td>{{ public_servant.user.name }}</td>
+        <td>{{ public_servant.user.surname }}</td>
+        <td>{{ public_servant.department }}</td>
+        <td>{{ public_servant.user.cname }}</td>
+        <td>
+            <form action="{{ url_for('delete_public_servant', email=public_servant.email) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('add_public_servant') }}">Add Public Servant</a>
+{% endblock %}

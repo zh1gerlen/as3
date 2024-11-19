@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Doctors</h2>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Degree</th>
+        <th>Country</th>
+        <th>Actions</th>
+    </tr>
+    {% for doctor in doctors %}
+    <tr>
+        <td>{{ doctor.email }}</td>
+        <td>{{ doctor.user.name }}</td>
+        <td>{{ doctor.user.surname }}</td>
+        <td>{{ doctor.degree }}</td>
+        <td>{{ doctor.user.cname }}</td>
+        <td>
+            <form action="{{ url_for('delete_doctor', email=doctor.email) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('add_doctor') }}">Add Doctor</a>
+{% endblock %}

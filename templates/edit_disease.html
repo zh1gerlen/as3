@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Disease</h2>
+<form method="POST">
+    <label for="pathogen">Pathogen:</label>
+    <input type="text" name="pathogen" value="{{ disease.pathogen }}" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="{{ disease.description }}" required>
+    <br>
+    <label for="disease_type_id">Disease Type:</label>
+    <select name="disease_type_id" required>
+        {% for disease_type in disease_types %}
+        <option value="{{ disease_type.id }}" {% if disease_type.id == disease.id %}selected{% endif %}>{{ disease_type.description }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit">Update Disease</button>
+</form>
+<a href="{{ url_for('list_diseases') }}">Back to Diseases</a>
+{% endblock %}

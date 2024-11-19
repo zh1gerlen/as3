@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Patient</h2>
+<form method="POST">
+    <label for="email">Select User:</label>
+    <select name="email" required>
+        {% for user in users %}
+        <option value="{{ user.email }}">{{ user.email }} - {{ user.name }} {{ user.surname }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Add as Patient</button>
+</form>
+<a href="{{ url_for('list_patients') }}">Back to Patients</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Disease Types</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    {% for disease_type in disease_types %}
+    <tr>
+        <td>{{ disease_type.id }}</td>
+        <td>{{ disease_type.description }}</td>
+        <td>
+            <a href="{{ url_for('edit_disease_type', id=disease_type.id) }}">Edit</a>
+            <form action="{{ url_for('delete_disease_type', id=disease_type.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('add_disease_type') }}">Add Disease Type</a>
+{% endblock %}

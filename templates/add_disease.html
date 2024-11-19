@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Disease</h2>
+<form method="POST">
+    <label for="disease_code">Disease Code:</label>
+    <input type="text" name="disease_code" required>
+    <br>
+    <label for="pathogen">Pathogen:</label>
+    <input type="text" name="pathogen" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" required>
+    <br>
+    <label for="disease_type_id">Disease Type:</label>
+    <select name="disease_type_id" required>
+        {% for disease_type in disease_types %}
+        <option value="{{ disease_type.id }}">{{ disease_type.description }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <button type="submit">Add Disease</button>
+</form>
+<a href="{{ url_for('list_diseases') }}">Back to Diseases</a>
+{% endblock %}

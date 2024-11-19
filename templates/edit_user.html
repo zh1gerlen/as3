@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit User</h2>
+<form method="POST">
+    <input type="text" name="name" value="{{ user.name }}" required>
+    <input type="text" name="surname" value="{{ user.surname }}" required>
+    <input type="text" name="salary" value="{{ user.salary }}">
+    <input type="text" name="phone" value="{{ user.phone }}">
+    <input type="text" name="cname" value="{{ user.cname }}" required>
+    <button type="submit">Save Changes</button>
+</form>
+<a href="{{ url_for('list_users') }}">Back to Users</a>
+{% endblock %}

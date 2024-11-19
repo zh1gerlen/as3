@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Public Servant</h2>
+<form method="POST">
+    <label for="email">Select User:</label>
+    <select name="email" required>
+        {% for user in users %}
+        <option value="{{ user.email }}">{{ user.email }} - {{ user.name }} {{ user.surname }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="department">Department:</label>
+    <input type="text" name="department" required>
+    <br>
+    <button type="submit">Add Public Servant</button>
+</form>
+<a href="{{ url_for('list_public_servants') }}">Back to Public Servants</a>
+{% endblock %}
